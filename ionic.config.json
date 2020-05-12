@@ -1,0 +1,7 @@
+{
+  "name": "STARTBUY",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
