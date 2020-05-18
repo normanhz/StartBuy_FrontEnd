@@ -1,0 +1,24 @@
+<ion-content class="ion-padding ion-text-center bg-image no-scroll center">
+  <div class="Container">
+      <div class="SubContainer">
+          <img class="logo" src="../../../../assets/img/Logo2.png">
+          <h2 class="ion-text-center">Inicia Sesión</h2>
+          <form [formGroup]="loginForm">
+              <ion-item class="input">
+                  <ion-label position="floating" color="white">Usuario / Correo</ion-label>
+                  <ion-input type="text" formControlName="user_email"></ion-input>
+              </ion-item>
+              <ion-item class="input">
+                  <ion-label position="floating" color="white">Contraseña</ion-label>
+                  <ion-input type="password" formControlName="user_password" class="form-controll" required>
+                  </ion-input>
+              </ion-item>
+              <p class= "ion-text-center"><b>¡Olvide la contraseña!</b></p>
+              <h2 class="ion-text-center"> </h2>
+          </form>
+          <ion-button expand="block" (click)="login()" [disabled]="loginForm.invalid">Inicia Sesión</ion-button>
+          <p class="ion-text-center">¿No te has registrado? <b (click)="goRegister()"> Regístrate</b></p>
+          <!-- <p class="ion-text-center">¿Tienes un Salón? <b (click)="gosalonRegister()"> Únete</b></p> -->
+      </div>
+  </div>
+</ion-content>

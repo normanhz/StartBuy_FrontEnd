@@ -1,0 +1,20 @@
+<ion-content class="ion-padding ion-text-center bg-image no-scroll center">
+  <div class="Container">
+      <div class="SubContainer">
+        <img class="logo" src="../../../../assets/img/Logo2.png">
+          <h2 text-center>Verifica tu Cuenta</h2>
+          <form [formGroup]="verificationForm">
+              <!-- <ion-item class="input">
+                  <ion-input placeholder="Codigo de Verificacion" formControlName="code"></ion-input>
+              </ion-item> -->
+             
+              <ion-item class="input">
+                  <ion-label position="floating" color="primary">Codigo de Verificación</ion-label>
+                  <ion-input type="number" formControlName="code"></ion-input>
+              </ion-item>
+              <h2 class="ion-text-center"> </h2>
+          </form>
+          <ion-button full (click)="verifyUser()" [disabled]="verificationForm.invalid">Verificar</ion-button>
+      </div>
+  </div>
+</ion-content>
