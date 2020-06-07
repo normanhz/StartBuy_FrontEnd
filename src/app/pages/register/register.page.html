@@ -5,37 +5,50 @@
           <h2 class="ion-text-center">Regístrate</h2>
           <form [formGroup]="registerForm">
             <ion-item class="input">
-              <ion-label position="floating" color="primary">Usuario</ion-label>
+              <ion-label position="floating" color="white">Usuario</ion-label>
               <ion-input type="text" formControlName="user_usuario"></ion-input>
           </ion-item>
             
               <ion-item class="input">
-                  <ion-label position="floating" color="primary">Nombres</ion-label>
+                  <ion-label position="floating" color="white">Nombres</ion-label>
                   <ion-input type="text" formControlName="user_nombres"></ion-input>
               </ion-item>
 
               <ion-item class="input">
-                  <ion-label position="floating" color="primary">Apellidos</ion-label>
+                  <ion-label position="floating" color="white">Apellidos</ion-label>
                   <ion-input type="text" formControlName="user_apellidos"></ion-input>
               </ion-item>
 
               <ion-item class="input">
-                  <ion-label position="floating" color="primary">Correo</ion-label>
-                  <ion-input type="text" formControlName="user_email"></ion-input>
+                  <ion-label position="floating" color="white">Correo</ion-label>
+                  <ion-input type="text" (ionBlur)="validarEmail($event)" formControlName="user_email"></ion-input>
               </ion-item>
               
               <ion-item class="input">
-                <ion-label position="floating" color="primary">Contraseña</ion-label>
+                <ion-label position="floating" color="white">Contraseña</ion-label>
                 <ion-input type="password" formControlName="user_password" class="form-controll" required>
                 </ion-input>
             </ion-item>
 
-              <ion-item class="input">
+              <!-- <ion-item class="input">
                 <ion-label position="floating" color="primary">Genero</ion-label>
                 <ion-input type="number" formControlName="user_generoid"></ion-input>
-            </ion-item>
+            </ion-item> -->
 
-                <ion-item class="input">
+            <ion-item class="input">
+              <ion-label position="floating" color="white">Género</ion-label>
+              <ion-select interface="action-sheet"  formControlName="user_generoid">               
+                 <ion-select-option *ngFor="let item of generos" [value]="item.generoId">
+                
+                    {{item.genero}}
+                 
+                 </ion-select-option>
+              </ion-select>
+
+              </ion-item>
+           
+
+                <!-- <ion-item class="input">
                   <ion-label position="floating" color="primary">Pais</ion-label>
                   <ion-input type="number" formControlName="user_paisid"></ion-input>
               </ion-item>
@@ -49,21 +62,21 @@
               <ion-item class="input">
                 <ion-label position="floating" color="primary">Ciudad</ion-label>
                 <ion-input type="number" formControlName="user_ciudadid"></ion-input>
-            </ion-item>
+            </ion-item> -->
 
               
             <ion-item class="input">
-              <ion-label position="floating" color="primary">Direccion Completa</ion-label>
+              <ion-label position="floating" color="white">Dirección Completa</ion-label>
               <ion-input type="text" formControlName="user_direccioncompleta"></ion-input>
           </ion-item>
 
               <ion-item class="input">
-                  <ion-label position="floating" color="primary">Teléfono</ion-label>
+                  <ion-label position="floating" color="white">Teléfono</ion-label>
                   <ion-input type="number" formControlName="user_telefono"></ion-input>
               </ion-item>
               <p class="ion-text-center"> <b></b></p>
           </form>
-          <ion-button expand="block" (click)="register()" [disabled]="registerForm.invalid">Registrarse</ion-button>
+          <ion-button expand="block" color="success" (click)="register()" [disabled]="registerForm.invalid">Registrarse</ion-button>
           <p class="ion-text-center">¿Ya estas registrado? <b (click)="goLogin()"> Inicia Sesión</b></p>
       </div>
   </div>

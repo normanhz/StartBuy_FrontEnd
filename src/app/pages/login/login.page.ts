@@ -4,7 +4,7 @@ import { ToastController, AlertController, LoadingController } from '@ionic/angu
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { IUser } from 'src/app/models/user.model';
-
+import { Storage } from '@ionic/storage';
 
 
 
@@ -20,6 +20,7 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private usersService: UsersService,
+    private storage: Storage,
     public toastController: ToastController,
     public alertController: AlertController,
     public loadingController: LoadingController,
@@ -53,8 +54,8 @@ export class LoginPage implements OnInit {
         if (user.cuentaVerificada === false) {
           this.alertUserVerify(user.usuarioPersonaId);
         } else {
-        this.SuccesAlert('Felicidades tu login funciona.'+ user.nombres)
-        this.router.navigate(['/tabs/tab2']);
+        this.storage.set('userAuth', user);
+        this.router.navigate(['/tabs/home']);
         }
       }, (error) => {
         loading.dismiss();

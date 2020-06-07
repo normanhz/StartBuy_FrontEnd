@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="Container">
+    <div class="SubContainer">
+      <img class="logo" src="../../../../assets/img/Logo2.png">
+      <h2 class="ion-text-center">¡Hola <b>{{nombres}}</b>!</h2>
+
+     
+      <ion-item lines="none" (click)="logout()" class="card">
+        <ion-icon color="white" slot="end" name="log-out"></ion-icon>
+        <ion-label color="white"><b>Cerrar Sesión</b></ion-label>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

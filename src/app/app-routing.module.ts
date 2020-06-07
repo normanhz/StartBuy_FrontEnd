@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { LoginGuardService } from './guards/login-guard.service';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: './tabs/tabs.module#TabsPageModule',
+    canActivate: [AuthGuardService]
   },
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  // },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    canActivate: [LoginGuardService]
   },
   {
     path: 'register',
@@ -17,6 +25,18 @@ const routes: Routes = [
   {
     path: 'verification',
     loadChildren: () => import('./pages/verification/verification.module').then( m => m.VerificationPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'businessbycategory',
+    loadChildren: () => import('./pages/businessbycategory/businessbycategory.module').then( m => m.BusinessbycategoryPageModule)
   }
 ];
 @NgModule({

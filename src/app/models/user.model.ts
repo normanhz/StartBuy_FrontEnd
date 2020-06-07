@@ -17,3 +17,8 @@ export interface IUser {
     fechaModifico: string
 
 }
+
+export interface IGender{
+    generoId: number,
+    genero: string
+};

@@ -9,12 +9,12 @@
               </ion-item> -->
              
               <ion-item class="input">
-                  <ion-label position="floating" color="primary">Codigo de Verificación</ion-label>
+                  <ion-label position="floating" color="white">Código de Verificación</ion-label>
                   <ion-input type="number" formControlName="code"></ion-input>
               </ion-item>
               <h2 class="ion-text-center"> </h2>
           </form>
-          <ion-button full (click)="verifyUser()" [disabled]="verificationForm.invalid">Verificar</ion-button>
+          <ion-button full (click)="verifyUser()" color="success" [disabled]="verificationForm.invalid">Verificar</ion-button>
       </div>
   </div>
 </ion-content>

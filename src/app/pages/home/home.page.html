@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title  slot="start">Hola, <b>{{nombres}}</b></ion-title> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <section >
+    <ion-title  slot="start">¿Qué estas buscando?</ion-title>
+  </section>
+  <ion-grid>
+    
+    <ion-row class="row"> 
+      
+      <ion-col *ngFor="let item of categories" size="6" text-center>
+        
+          <ion-card  class="card" routerLink="../../../businessbycategory" [queryParams]="{categoriaEmpresaId: item.categoriaEmpresaId}" padding color="medium" text-center>
+            <div class="center-card">
+            <img class="EmpresaImage" [src]="item.categoriaEmpresaImage">
+           </div>
+           <div class="center-card">
+            <h2 style="font-size: 1rem"> {{item.categoriaEmpresa}}
+            </h2>
+            </div>
+          </ion-card>
+        
+      </ion-col>
+
+      
+    </ion-row>
+   
+ 
+  </ion-grid>
+</ion-content>
+
+
