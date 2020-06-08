@@ -37,6 +37,14 @@ const routes: Routes = [
   {
     path: 'businessbycategory',
     loadChildren: () => import('./pages/businessbycategory/businessbycategory.module').then( m => m.BusinessbycategoryPageModule)
+  },
+  {
+    path: 'promotions',
+    loadChildren: () => import('./pages/promotions/promotions.module').then( m => m.PromotionsPageModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
   }
 ];
 @NgModule({

@@ -13,11 +13,11 @@ const routes: Routes = [
       },
       {
         path: 'promotions',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import('../pages/promotions/promotions.module').then(m => m.PromotionsPageModule)
       },
       {
         path: 'showcart',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import('../pages/cart/cart.module').then(m => m.CartPageModule)
       },
       {
         path: 'settings',

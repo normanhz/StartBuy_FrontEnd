@@ -1,0 +1,23 @@
+ion-content {
+    --background: url('../../../assets/img/background5.jpg') no-repeat center center / cover;
+}
+.logo {
+    border-radius: 50px;
+    width: 40%;
+     margin-left: 30%;
+     margin-right: 10%;
+}
+
+.Container {
+   height: 100%;
+   display: flex;
+}
+
+.SubContainer{
+   margin: auto;
+}
+
+.card {
+   --background: rgba(11, 131, 95, 0.5);
+   border-radius: 25px;
+}
