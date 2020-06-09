@@ -43,7 +43,6 @@ export class HomePage implements OnInit {
        this.BusinessService.getBusinessCategories().subscribe((data) => {
           // tslint:disable-next-line: no-angle-bracket-type-assertion
           this.categories = data;
-          console.log(this.categories)
        });
     });
   }
