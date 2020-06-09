@@ -47,7 +47,7 @@ export class VerificationPage implements OnInit {
       loading.dismiss();
       // tslint:disable-next-line: comment-format
       this.storage.set('userAuth', user);
-      this.router.navigate(['/tabs/tab2']);
+      this.router.navigate(['/tabs/home']);
     }, (error) => {
       loading.dismiss();
       this.presentAlert('Codigo Incorrecto.')

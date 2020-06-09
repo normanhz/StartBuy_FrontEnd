@@ -113,7 +113,7 @@ export class RegisterPage implements OnInit {
      return;
     } else {
       // tslint:disable-next-line: quotemark
-      this.presentAlert("La dirección de email es incorrecta!.");
+      this.presentAlert("¡La dirección de email es incorrecta!");
       // tslint:disable-next-line: quotemark
       event.target.value= "";
     }
