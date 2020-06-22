@@ -22,14 +22,14 @@
           </ion-card> -->
 
 
-          <ion-card *ngFor="let item of business" class="card">
-            <ion-card-content>
+          <ion-card *ngFor="let item of business" class="card" routerLink="/productbybusiness" [queryParams]="{empresaId: item.empresaId}">
+            <ion-card-content >
               <!-- <ion-card-header>
                 <ion-card-title class="ion-text-center"><b>{{item.empresa}}</b></ion-card-title>
              
               </ion-card-header> -->
-              <div>
-                <ion-item lines="none">
+              <div >
+                <ion-item lines="none" >
                   <ion-avatar class="ion-no-padding" slot="start">
                     <img style="margin-top: -25px;" [src]="item.empresaImage" />
                   </ion-avatar>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { IBusinessCategories, IBusiness } from '../models/business.model';
+import { IBusinessCategories, IBusiness, IProducts } from '../models/business.model';
 import { environment } from 'src/environments/environment';
 import { Storage } from '@ionic/storage';
 
@@ -20,5 +20,10 @@ export class BusinessService {
   getBusinessByCategories(categoriaEmpresaId) {
     // tslint:disable-next-line: max-line-length
     return this.http.get<IBusiness[]>(`${environment.API_URL}Business/GetBusinessByCategories/${categoriaEmpresaId}`, {headers:this.headers});
+  }
+
+  getProductByBusiness(empresaId) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<IProducts[]>(`${environment.API_URL}Business/GetProductsByBusiness/${empresaId}`, {headers:this.headers});
   }
 }

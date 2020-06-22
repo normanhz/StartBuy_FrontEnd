@@ -3,7 +3,7 @@ import { HttpHeaders, HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Storage } from '@ionic/storage';
-import { IGender } from '../models/user.model';
+import { IGender, IUser } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,18 @@ export class UsersService {
     // tslint:disable-next-line: max-line-length
     return this.http.post(`${environment.API_URL}User/UserVerification`, {UsuarioPersonaId: JSON.parse(usuarioPersonaId), CodigoVerificacion: code}, {headers : this.headers});
   }
+
+  GetUsersById(id) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<IUser[]>(`${environment.API_URL}User/GetUsersById/${id}`, {headers:this.headers});
+  }
+
+  EditUserInfo(usuarioPersonaId, usuario, nombres, apellidos, email, direccioncompleta, telefono) {
+
+    // tslint:disable-next-line: object-literal-shorthand
+    // tslint:disable-next-line: max-line-length
+    return this.http.put<IUser[]>(`${environment.API_URL}User/EditUserInfo/${JSON.parse(usuarioPersonaId)}`, {Usuario: usuario, Nombres: nombres, Apellidos: apellidos, Email: email, DireccionCompleta: direccioncompleta, Telefono: telefono}, {headers : this.headers});
+    }
 
   getGenders() {
     // tslint:disable-next-line: max-line-length

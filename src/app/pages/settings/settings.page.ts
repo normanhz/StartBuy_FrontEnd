@@ -28,6 +28,11 @@ export class SettingsPage implements OnInit {
     });
   }
 
+  GoEditInfo(){
+    this.router.navigate(['/edituserinfo'], {queryParams: {userid: this.user.usuarioPersonaId}});
+  }
+
+
   logout(){
     this.usersService.logout();
     this.router.navigate(['/login']);

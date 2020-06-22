@@ -14,3 +14,14 @@ export interface IBusiness{
     estado: boolean,
     categoriaEmpresaId: number
 };
+
+export interface IProducts{
+    productoId: number,
+    producto: string,
+    descripcion: string,
+    productoImage: string,
+    empresaId: number,
+    categoriaProductoId: number,
+    precio: number,
+    cantidadEnStock: number
+};

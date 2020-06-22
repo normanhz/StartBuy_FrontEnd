@@ -1,0 +1,43 @@
+ion-content {
+    --background: url('../../../assets/img/background12.jpg') no-repeat center center / cover;
+  }
+  
+  img {
+    float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+  .card-title{
+    font-size: large;
+    color: black;
+  }
+  
+  .salonImage {
+    border-radius: 30px;
+    width: 100%;
+    // margin-left: 10%;
+    // margin-right: 10%;
+  }
+  
+  .sliderImg{
+    border-radius: 10px;
+    width: 100%;
+  }
+  
+  .ion-slides> ion-card {
+    position: relative;
+    // width: 50%;
+  }
+  
+  ion-slides {
+    width: 100%;
+    padding-bottom: 30px;
+  }
+  
+  .card {
+    --background: rgba(255,255,255,0.3);
+    border-radius: 20px;
+  }
+  

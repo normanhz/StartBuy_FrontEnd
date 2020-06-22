@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home/businessbycategory"></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h1 style="color: #FFFFFF;" class="ion-text-center font-weight: bold;"><h2 style="font-weight: bold;">Productos</h2></h1>
+
+<ion-label *ngFor="let category of products" style="color: yellow;"><h2 style="padding-left:20px; font-weight: bold;">{{category.categoriaProducto}}</h2>
+        <div>
+          <ion-slides pager="true"  [options]="sliderConfig" #slider (ionSlidesDidLoad)="slideDidLoader(slider)">
+            <ion-slide *ngFor="let productos of category.products" >
+              <div >
+              <ion-card class="card" color="transparent">
+                <ion-card-header class="ion-no-padding">
+                  <ion-card-content class="ion-no-padding">
+                    <img class="sliderImg" [src]="productos.productImage">
+                  </ion-card-content>
+                </ion-card-header>
+                <div class="bottomSlide">
+                  <ion-text class="titlePromotion" style="color: #FFE570; font-weight: bold;"><h2 style="font-weight: bold;">{{slidesDidLoad(slider, productos.producto)}}</h2></ion-text>
+                  <div>
+                    <ion-text class="titleDescription" style="color: #FFFFFF; font-weight: bold;">{{slidesDidLoad(slider, productos.precio)}} Lps</ion-text>
+                  </div>
+                </div>
+              </ion-card>
+            </div >
+            </ion-slide>
+          </ion-slides>
+        </div>
+  </ion-label>
+  
+
+</ion-content>
