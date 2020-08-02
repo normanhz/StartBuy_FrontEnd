@@ -9,9 +9,9 @@
 
 <ion-content>
 
-  <h1 style="color: #FFFFFF;" class="ion-text-center font-weight: bold;"><h2 style="font-weight: bold;">Productos</h2></h1>
+  <h1  style="color: black; font-weight: bold;" class="ion-text-center font-weight: bold;"><h2 style="font-weight: bold;">Productos</h2></h1>
 
-<ion-label *ngFor="let category of products" style="color: yellow;"><h2 style="padding-left:20px; font-weight: bold;">{{category.categoriaProducto}}</h2>
+<ion-label *ngFor="let category of products"  style="color: green; font-weight: bold;"><h2 style="padding-left:20px; font-weight: bold;">{{category.categoriaProducto}}</h2>
         <div>
           <ion-slides pager="true"  [options]="sliderConfig" #slider (ionSlidesDidLoad)="slideDidLoader(slider)">
             <ion-slide *ngFor="let productos of category.products" >
@@ -23,9 +23,9 @@
                   </ion-card-content>
                 </ion-card-header>
                 <div class="bottomSlide">
-                  <ion-text class="titlePromotion" style="color: #FFE570; font-weight: bold;"><h2 style="font-weight: bold;">{{slidesDidLoad(slider, productos.producto)}}</h2></ion-text>
+                  <ion-text class="titlePromotion" style="color: #2eaa53; font-weight: bold;"><h2 style="font-weight: bold;">{{slidesDidLoad(slider, productos.producto)}}</h2></ion-text>
                   <div>
-                    <ion-text class="titleDescription" style="color: #FFFFFF; font-weight: bold;">{{slidesDidLoad(slider, productos.precio)}} Lps</ion-text>
+                    <ion-text class="titleDescription" style="color: #131212; font-weight: bold;">L. {{slidesDidLoad(slider, productos.precio)}}.00</ion-text>
                   </div>
                 </div>
               </ion-card>

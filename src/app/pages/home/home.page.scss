@@ -1,5 +1,5 @@
 ion-content {
-    --background: url('../../../assets/img/background12.jpg') no-repeat center center / cover;
+    --background: url('../../../assets/img/background4.jpg') no-repeat center center / cover;
 }
 
 .EmpresaImage{
@@ -23,8 +23,7 @@ ion-content {
 
 .card {
     border-radius: 20px;
-   
-    background-color: #15aa91;
+    //background-color: #15aa91;
     padding: 20px 10px 10px;
     min-height: 130px;
     
@@ -39,5 +38,6 @@ ion-content {
       h2{
           text-align: center;
           font-weight: bold;
+          color: black;
       }
   }

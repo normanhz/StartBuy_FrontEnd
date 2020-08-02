@@ -7,7 +7,7 @@
 <ion-content>
   <br>
   <section >
-    <ion-title  slot="start">¿Qué estas buscando?</ion-title>
+    <ion-title  slot="start" style="color: green; font-weight: bold;">¿Qué estas buscando?</ion-title>
   </section>
   <ion-grid>
     
@@ -15,7 +15,7 @@
       
       <ion-col *ngFor="let item of categories" size="6" text-center>
         
-          <ion-card  class="card" routerLink="../../../businessbycategory" [queryParams]="{categoriaEmpresaId: item.categoriaEmpresaId}" padding color="medium" text-center>
+          <ion-card  class="card" routerLink="../../../businessbycategory" [queryParams]="{categoriaEmpresaId: item.categoriaEmpresaId}" padding color="success" text-center>
             <div class="center-card">
             <img class="EmpresaImage" [src]="item.categoriaEmpresaImage">
            </div>

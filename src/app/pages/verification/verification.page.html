@@ -2,19 +2,19 @@
   <div class="Container">
       <div class="SubContainer">
         <img class="logo" src="../../../../assets/img/Logo1.png">
-          <h2 text-center>Verifica tu Cuenta</h2>
+          <h2 text-center style="color: green; font-weight: bold;">Verifica tu Cuenta</h2>
           <form [formGroup]="verificationForm">
               <!-- <ion-item class="input">
                   <ion-input placeholder="Codigo de Verificacion" formControlName="code"></ion-input>
               </ion-item> -->
              
               <ion-item class="input">
-                  <ion-label position="floating" color="white">Código de Verificación</ion-label>
-                  <ion-input type="number" formControlName="code"></ion-input>
+                  <ion-label position="floating" style="color: black;">Código de Verificación</ion-label>
+                  <ion-input type="number"  style="color: black;" formControlName="code"></ion-input>
               </ion-item>
               <h2 class="ion-text-center"> </h2>
           </form>
-          <ion-button full (click)="verifyUser()" color="success" [disabled]="verificationForm.invalid">Verificar</ion-button>
+          <ion-button full (click)="verifyUser()" color="medium" style="color: green;" [disabled]="verificationForm.invalid">Verificar</ion-button>
       </div>
   </div>
 </ion-content>

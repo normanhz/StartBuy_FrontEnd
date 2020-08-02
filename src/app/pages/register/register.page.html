@@ -2,31 +2,31 @@
   <div class="Container">
       <div class="SubContainer">
         <img class="logo" src="../../../../assets/img/Logo1.png">
-          <h2 class="ion-text-center">Regístrate</h2>
+          <h2 class="ion-text-center" style="color: green; font-weight: bold;">Regístrate</h2>
           <form [formGroup]="registerForm">
             <ion-item class="input">
-              <ion-label position="floating" color="white">Usuario</ion-label>
-              <ion-input type="text" formControlName="user_usuario"></ion-input>
+              <ion-label position="floating" style="color: black;">Usuario</ion-label>
+              <ion-input type="text" style="color: black;" formControlName="user_usuario"></ion-input>
           </ion-item>
             
               <ion-item class="input">
-                  <ion-label position="floating" color="white">Nombres</ion-label>
-                  <ion-input type="text" formControlName="user_nombres"></ion-input>
+                  <ion-label position="floating" style="color: black;">Nombres</ion-label>
+                  <ion-input  type="text" style="color: black;" formControlName="user_nombres"></ion-input>
               </ion-item>
 
               <ion-item class="input">
-                  <ion-label position="floating" color="white">Apellidos</ion-label>
-                  <ion-input type="text" formControlName="user_apellidos"></ion-input>
+                  <ion-label position="floating" style="color: black;">Apellidos</ion-label>
+                  <ion-input type="text" style="color: black;" formControlName="user_apellidos"></ion-input>
               </ion-item>
 
               <ion-item class="input">
-                  <ion-label position="floating" color="white">Correo</ion-label>
-                  <ion-input type="text" (ionBlur)="validarEmail($event)" formControlName="user_email"></ion-input>
+                  <ion-label position="floating" style="color: black;">Correo</ion-label>
+                  <ion-input type="text" style="color: black;" (ionBlur)="validarEmail($event)" formControlName="user_email"></ion-input>
               </ion-item>
               
               <ion-item class="input">
-                <ion-label position="floating" color="white">Contraseña</ion-label>
-                <ion-input type="password" formControlName="user_password" class="form-controll" required>
+                <ion-label position="floating"style="color: black;">Contraseña</ion-label>
+                <ion-input type="password" style="color: black;" formControlName="user_password" class="form-controll" required>
                 </ion-input>
             </ion-item>
 
@@ -36,9 +36,9 @@
             </ion-item> -->
 
             <ion-item class="input">
-              <ion-label position="floating" color="white">Género</ion-label>
-              <ion-select interface="action-sheet"  formControlName="user_generoid">               
-                 <ion-select-option *ngFor="let item of generos" [value]="item.generoId">
+              <ion-label position="floating" style="color: black;">Género</ion-label>
+              <ion-select interface="action-sheet" style="color: black;" formControlName="user_generoid">               
+                 <ion-select-option *ngFor="let item of generos" [value]="item.generoId" style="color: black;">
                 
                     {{item.genero}}
                  
@@ -47,37 +47,20 @@
 
               </ion-item>
            
-
-                <!-- <ion-item class="input">
-                  <ion-label position="floating" color="primary">Pais</ion-label>
-                  <ion-input type="number" formControlName="user_paisid"></ion-input>
-              </ion-item>
-
-              <ion-item class="input">
-                  <ion-label position="floating" color="primary">Departamento</ion-label>
-                  <ion-input type="number" formControlName="user_departamentoid" class="form-controll" required>
-                  </ion-input>
-              </ion-item>
-
-              <ion-item class="input">
-                <ion-label position="floating" color="primary">Ciudad</ion-label>
-                <ion-input type="number" formControlName="user_ciudadid"></ion-input>
-            </ion-item> -->
-
               
             <ion-item class="input">
-              <ion-label position="floating" color="white">Dirección Completa</ion-label>
-              <ion-input type="text" formControlName="user_direccioncompleta"></ion-input>
+              <ion-label position="floating" style="color: black;">Dirección Completa</ion-label>
+              <ion-input type="text" style="color: black;" formControlName="user_direccioncompleta"></ion-input>
           </ion-item>
 
               <ion-item class="input">
-                  <ion-label position="floating" color="white">Teléfono</ion-label>
-                  <ion-input type="number" formControlName="user_telefono"></ion-input>
+                  <ion-label position="floating" style="color: black;">Teléfono</ion-label>
+                  <ion-input type="number" style="color: black;" formControlName="user_telefono"></ion-input>
               </ion-item>
               <p class="ion-text-center"> <b></b></p>
           </form>
-          <ion-button expand="block" color="success" (click)="register()" [disabled]="registerForm.invalid">Registrarse</ion-button>
-          <p class="ion-text-center">¿Ya estas registrado? <b (click)="goLogin()"> Inicia Sesión</b></p>
+          <ion-button expand="block" color="medium" style="color: green;" (click)="register()" [disabled]="registerForm.invalid">Registrarse</ion-button>
+          <p class="ion-text-center" style="color: green;">¿Ya estas registrado? <b (click)="goLogin()"> Inicia Sesión</b></p>
       </div>
   </div>
 </ion-content>
