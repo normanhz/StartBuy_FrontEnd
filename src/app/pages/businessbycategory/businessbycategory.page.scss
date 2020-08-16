@@ -3,30 +3,34 @@ ion-content {
 }
 
 .card {
-  --background: rgba(67, 185, 102, 0.5);
+  --background:  rgba(139, 216, 162, 0.5);
   border-radius: 15px;
   
 }
 
 .card> ion-card-content {
-  --background: rgba(67, 185, 102, 0.5);
+  --background:  rgba(67, 241, 119, 0.5);
+
   border-radius: 15px;
   
 }
 
 .card> ion-card-content > ion-card-header {
-  --background: rgba(67, 185, 102, 0.5);
+  --background:  rgba(67, 241, 119, 0.5);
+
   border-radius: 20px;
 }
 
 .card> ion-card-content > div {
-  --background: rgba(67, 185, 102, 0.5);
+  --background:  rgba(67, 241, 119, 0.5);
+
   border-radius: 30px;
 
 }
 
 .card>ion-card-content > div> ion-item {
-  --background:  rgba(67, 185, 102, 0.5);
+  --background:  rgba(67, 241, 119, 0.5);
+
   border-radius: 30px;
   h2{
     text-align: center;

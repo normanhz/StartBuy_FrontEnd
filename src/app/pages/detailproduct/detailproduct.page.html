@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home/businessbycategory"></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <h1  style="color: black; font-weight: bold;" class="ion-text-center font-weight: bold;"><h2 style="font-weight: bold;">Detalle del Producto</h2></h1>
+
+  <div >
+    <ion-card class="card" *ngFor="let productos of products" color="transparent">
+      <ion-card-header class="ion-no-padding">
+        <ion-card-content class="ion-no-padding">
+          <img class="sliderImg" [src]="productos.productoImage">
+        </ion-card-content>
+      </ion-card-header>
+      <div class="bottomSlide">
+        <ion-text class="titlePromotion" style="color: #2eaa53; font-weight: bold;"><h2 style="font-weight: bold; text-align: center;">{{productos.producto}}</h2></ion-text>
+        <div style="padding-left: 0.5em;">
+          <ion-text class="titleDescription" style="color: #131212; font-weight: bold;">{{productos.descripcion}}</ion-text>
+
+        </div>
+        <br>
+          <div style="padding-left: 0.5em;"> 
+            <ion-text class="titleDescription" style="color: #131212; font-weight: bold;">L. {{productos.precio}}.00</ion-text>
+          </div>
+        </div>
+     
+    </ion-card>
+
+  </div>
+
+  <div style="text-align: center;">
+    <ion-button (click)="decrement()" color="success"><ion-icon name="remove-circle" ></ion-icon></ion-button>
+    <ion-label style="color: black;">&nbsp; {{currentNumber}} &nbsp;</ion-label>
+      <ion-button (click)="increment()" color="success"><ion-icon name="add-circle" ></ion-icon></ion-button>
+      &nbsp;
+   <ion-button (click)="AddtoCart($event)" color="success">
+    <ion-icon name="cart"></ion-icon>
+    <ion-label>Cart</ion-label>
+  </ion-button>
+</div>
+</ion-content>

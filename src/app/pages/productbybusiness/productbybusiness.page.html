@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home/businessbycategory"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
     </ion-buttons>
     <ion-searchbar></ion-searchbar>
   </ion-toolbar>
@@ -11,10 +11,10 @@
 
   <h1  style="color: black; font-weight: bold;" class="ion-text-center font-weight: bold;"><h2 style="font-weight: bold;">Productos</h2></h1>
 
-<ion-label *ngFor="let category of products"  style="color: green; font-weight: bold;"><h2 style="padding-left:20px; font-weight: bold;">{{category.categoriaProducto}}</h2>
+<ion-label *ngFor="let category of products"   style="color: green; font-weight: bold;"><h2 style="padding-left:20px; font-weight: bold;">{{category.categoriaProducto}}</h2>
         <div>
           <ion-slides pager="true"  [options]="sliderConfig" #slider (ionSlidesDidLoad)="slideDidLoader(slider)">
-            <ion-slide *ngFor="let productos of category.products" >
+            <ion-slide *ngFor="let productos of category.products" routerLink="/detailproduct" [queryParams]="{productoId: productos.productId}">
               <div >
               <ion-card class="card" color="transparent">
                 <ion-card-header class="ion-no-padding">

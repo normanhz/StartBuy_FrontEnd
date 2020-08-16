@@ -54,6 +54,7 @@ export class ProductbybusinessPage implements OnInit {
   getProductByBusiness() {
     this.BusinessService.getProductByBusiness(this.empresaId).subscribe((products) => {
       this.products = products;
+      console.log(this.products);
     });
   }
 

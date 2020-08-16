@@ -26,4 +26,10 @@ export class BusinessService {
     // tslint:disable-next-line: max-line-length
     return this.http.get<IProducts[]>(`${environment.API_URL}Business/GetProductsByBusiness/${empresaId}`, {headers:this.headers});
   }
+
+  getProductById(productId) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<IProducts[]>(`${environment.API_URL}Business/GetProductById/${productId}`, {headers:this.headers});
+  }
+
 }

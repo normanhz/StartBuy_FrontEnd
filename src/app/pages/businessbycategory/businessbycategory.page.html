@@ -22,7 +22,7 @@
           </ion-card> -->
 
 
-          <ion-card *ngFor="let item of business" class="card"  routerLink="/productbybusiness" [queryParams]="{empresaId: item.empresaId}">
+          <ion-card *ngFor="let item of business" color="transparent" class="card"  routerLink="/productbybusiness" [queryParams]="{empresaId: item.empresaId}">
             <ion-card-content >
               <!-- <ion-card-header>
                 <ion-card-title class="ion-text-center"><b>{{item.empresa}}</b></ion-card-title>
