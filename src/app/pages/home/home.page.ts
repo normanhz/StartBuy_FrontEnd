@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IBusinessCategories } from '../../models/business.model';
-import { Router } from '@angular/router';
 import { BusinessService } from '../../services/business.service';
-import { AlertController, LoadingController } from '@ionic/angular';
-import { FormBuilder } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { IUser } from 'src/app/models/user.model';
 
@@ -17,6 +14,7 @@ export class HomePage implements OnInit {
   public user: IUser;
   public userName: string;
   public nombres: string;
+  productsInCart: any = [];
   constructor(
     private storage: Storage,
     // tslint:disable-next-line: no-shadowed-variable
@@ -46,5 +44,6 @@ export class HomePage implements OnInit {
        });
     });
   }
+
 
 }

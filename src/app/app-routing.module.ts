@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { LoginGuardService } from './guards/login-guard.service';
+import { AdminauthGuardService } from './adminguards/adminauth-guard.service';
+import { AdminloginGuardService } from './adminguards/adminlogin-guard.service';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: './tabs/tabs.module#TabsPageModule',
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
   },
   // {
   //   path: '',
@@ -57,6 +59,30 @@ const routes: Routes = [
   {
     path: 'detailproduct',
     loadChildren: () => import('./pages/detailproduct/detailproduct.module').then( m => m.DetailproductPageModule)
+  },
+  {
+    path: 'pixelpay',
+    loadChildren: () => import('./pages/pixelpay/pixelpay.module').then( m => m.PixelpayPageModule)
+  },
+  {
+    path: 'adminhome',
+    loadChildren: () => import('./adminpages/adminhome/adminhome.module').then( m => m.AdminhomePageModule)
+  },
+  {
+    path: 'pendientes',
+    loadChildren: () => import('./adminpages/pendientes/pendientes.module').then( m => m.PendientesPageModule)
+  },
+  {
+    path: 'ventas',
+    loadChildren: () => import('./adminpages/ventas/ventas.module').then( m => m.VentasPageModule)
+  },
+  {
+    path: 'registernotices',
+    loadChildren: () => import('./adminpages/registernotices/registernotices.module').then( m => m.RegisternoticesPageModule)
+  },
+  {
+    path: 'enviarsolicitud',
+    loadChildren: () => import('./adminpages/enviarsolicitud/enviarsolicitud.module').then( m => m.EnviarsolicitudPageModule)
   }
 ];
 @NgModule({

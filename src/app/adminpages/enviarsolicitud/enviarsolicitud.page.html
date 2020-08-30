@@ -1,0 +1,65 @@
+<ion-content class="ion-padding ion-text-center">
+  <div class="Container">
+      <div class="SubContainer">
+        <img class="logo" src="../../../../assets/img/Logo1.png">
+          <h2 class="ion-text-center" style="color: green; font-weight: bold;">Envío de solicitud</h2>
+          <form [formGroup]="registerForm">
+            <ion-item class="input">
+              <ion-label position="floating" style="color: black;">Usuario</ion-label>
+              <ion-input type="text" style="color: black;" formControlName="user_usuario"></ion-input>
+          </ion-item>
+            
+              <ion-item class="input">
+                  <ion-label position="floating" style="color: black;">Nombres</ion-label>
+                  <ion-input  type="text" style="color: black;" formControlName="user_nombres"></ion-input>
+              </ion-item>
+
+              <ion-item class="input">
+                  <ion-label position="floating" style="color: black;">Apellidos</ion-label>
+                  <ion-input type="text" style="color: black;" formControlName="user_apellidos"></ion-input>
+              </ion-item>
+
+              <ion-item class="input">
+                  <ion-label position="floating" style="color: black;">Correo</ion-label>
+                  <ion-input type="text" style="color: black;"  formControlName="user_email"></ion-input>
+              </ion-item>
+              
+              <ion-item class="input">
+                <ion-label position="floating" style="color: black;">Nombre Empresa</ion-label>
+                <ion-input type="text" style="color: black;"  formControlName="user_empresa"></ion-input>
+            </ion-item>
+              <ion-item class="input">
+                <ion-label position="floating"style="color: black;">Contraseña</ion-label>
+                <ion-input type="password" style="color: black;" formControlName="user_password" class="form-controll" required>
+                </ion-input>
+            </ion-item>
+
+            <ion-item class="input">
+              <ion-label position="floating" style="color: black;">Género</ion-label>
+              <ion-select interface="action-sheet" style="color: black;" formControlName="user_generoid">               
+                 <ion-select-option *ngFor="let item of generos" [value]="item.generoId" style="color: black;">
+                
+                    {{item.genero}}
+                 
+                 </ion-select-option>
+              </ion-select>
+
+              </ion-item>
+           
+              
+            <ion-item class="input">
+              <ion-label position="floating" style="color: black;">Dirección Completa</ion-label>
+              <ion-input type="text" style="color: black;" formControlName="user_direccioncompleta"></ion-input>
+          </ion-item>
+
+              <ion-item class="input">
+                  <ion-label position="floating" style="color: black;">Teléfono</ion-label>
+                  <ion-input type="number" style="color: black;" formControlName="user_telefono"></ion-input>
+              </ion-item>
+              <p class="ion-text-center"> <b></b></p>
+          </form>
+          <ion-button expand="block" color="medium" style="color: green;" (click)="register()" [disabled]="registerForm.invalid">Enviar solicitud</ion-button>
+          <p class="ion-text-center" style="color: green;">¿Ya estas asociado? <b (click)="goLogin()"> Inicia Sesión</b></p>
+      </div>
+  </div>
+</ion-content>

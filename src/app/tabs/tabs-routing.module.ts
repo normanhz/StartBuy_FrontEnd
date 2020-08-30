@@ -24,6 +24,18 @@ const routes: Routes = [
         loadChildren: () => import('../pages/settings/settings.module').then(m => m.SettingsPageModule)
       },
       {
+        path: 'adminhome',
+        loadChildren: () => import('../adminpages/adminhome/adminhome.module').then(m => m.AdminhomePageModule)
+      },
+      {
+        path: 'ventas',
+        loadChildren: () => import('../adminpages/ventas/ventas.module').then(m => m.VentasPageModule)
+      },
+      {
+        path: 'pendientes',
+        loadChildren: () => import('../adminpages/pendientes/pendientes.module').then(m => m.PendientesPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'

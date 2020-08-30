@@ -14,9 +14,12 @@ import { IProducts } from '../../models/business.model';
 export class DetailproductPage implements OnInit {
   public currentNumber: number;
   public user: IUser;
-  products: any = [];
+  public userName: string;
+  public nombres: string;
+  products: IProducts[] = [];
   public productoId :  number;
   alert: any;
+  cantidadEnStock: number;
   constructor(private router: Router,
     private route: ActivatedRoute,
     public alertController: AlertController,
@@ -33,6 +36,12 @@ export class DetailproductPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.storage.get('userAuth').then((data) => {
+      this.user = data
+      this.userName = this.user.usuario;
+      this.nombres = this.user.nombres;
+    });
+
     this.currentNumber = 0;
     this.getProductById();
   }
@@ -50,6 +59,7 @@ export class DetailproductPage implements OnInit {
   getProductById() {
     this.BusinessService.getProductById(this.productoId).subscribe((products) => {
       this.products = products;
+      this.cantidadEnStock = this.products[0].cantidadEnStock;
     });
   }
 
@@ -59,10 +69,15 @@ export class DetailproductPage implements OnInit {
     if(this.currentNumber < 1)
     {
       // tslint:disable-next-line: quotemark
-      this.presentAlert("Lo sentimos no puedo agregar 0 productos");
+      this.presentAlert("Lo sentimos, no puede agregar 0 productos.");
       return;
     }
-
+    if(this.currentNumber > this.cantidadEnStock)
+    {
+      // tslint:disable-next-line: quotemark
+      this.presentAlert("Lo sentimos, la cantidad deseada es mayor a la cantidad disponible.");
+      return;
+    }
     if(this.currentNumber === 1)
     {
        // tslint:disable-next-line: quotemark
@@ -84,9 +99,7 @@ export class DetailproductPage implements OnInit {
             text: 'Si',
             handler: () => {
                 alert.dismiss(true)
-                // tslint:disable-next-line: quotemark
-                console.log("aqui presionoo!");
-                this.currentNumber = 0;
+                this.AddProductsToCart();
                 return false
             }
         }, {
@@ -114,5 +127,32 @@ export class DetailproductPage implements OnInit {
     await alert.present();
   }
 
+
+  async SuccessAlert(msj) {
+    const alert = await this.alertController.create({
+      header: 'Success',
+      message: msj
+    });
+
+    await alert.present();
+  }
+
+  async AddProductsToCart() {
+    const loading = await this.loadingController.create({
+    });
+    await loading.present();
+    this.BusinessService.SaveProductsToCart(
+      this.products[0].productoId,
+      this.currentNumber,
+      this.user.usuarioPersonaId
+    ).subscribe((user: IUser) => {
+        loading.dismiss();
+        this.SuccessAlert('Producto agregado al carrito exitosamente.');
+        this.currentNumber = 0;
+      }, (error) => {
+        loading.dismiss();
+        this.presentAlert('Error al agregar al carrito.');
+      });
+  }
 
 }

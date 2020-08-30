@@ -1,0 +1,98 @@
+ion-content {
+    --background: url('../../../assets/img/background4.jpg') no-repeat center center / cover;
+  }
+  
+  .logo {
+    //border-radius: 50px;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.designdiv1{
+    border-radius: 2px;
+    background-color: rgba(49, 45, 47, 0.884);
+    width: 60%;
+    height: 4%;
+    margin: 0 auto;
+}
+
+.designdiv2{
+    border-radius: 10px;
+    background-color: rgb(134, 59, 123);
+    width: 75%;
+    height: 25%;
+    margin: 0 auto;
+}
+
+.input1{
+    padding-top: 50px;
+    border-radius: 5px;
+    background-color: rgba(151, 93, 143, 0.808);
+    width: 100%;
+    height: 5%;
+    font-weight: bold;
+    
+}
+
+.input2{
+    padding-top: 50px;
+    border-radius: 5px;
+    width: 100%;
+    height: 5%;
+    font-weight: bold;
+    
+}
+
+.designdiv3{
+    border-radius: 2px;
+    background-color: white;
+    width: 60%;
+    height: 40%;
+    margin: 0 auto;
+}
+
+.designdiv4{
+    border-radius: 2px;
+    background-color: white;
+    width: 60%;
+    height: 4%;
+    margin: 0 auto;
+    color: black;
+}
+
+.designdiv5{
+    border-radius: 2px;
+    background-color: white;
+    width: 60%;
+    height: 4%;
+    margin: 0 auto;
+    color: black;
+}
+
+.input3{
+    padding-top: 50px;
+    border-radius: 5px;
+    width: 100%;
+    height: 5%;
+    font-weight: bold;
+    color: black;
+    
+}
+.designdiv6{
+    border-radius: 2px;
+    padding-left: 12%;
+    background-color: white;
+    width: 100%;
+    height: 4%;
+    color: black;
+}
+
+.buttonPagar
+ {
+  --background:  rgb(134, 59, 123);
+  color: white;
+  font-weight: bold;
+
+ }

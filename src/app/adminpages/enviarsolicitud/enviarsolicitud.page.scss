@@ -1,0 +1,27 @@
+ion-content {
+    --background: url('../../../assets/img/background4.jpg') no-repeat center center / cover;
+}
+.input {
+    --background: rgba(0, 0, 0, 0.0);
+}
+
+
+.logo {
+    //border-radius: 50px;
+    width: 40%;
+    // margin-left: 10%;
+    // margin-right: 10%;
+}
+
+.input {
+    --background: rgba(0, 0, 0, 0.0);
+}
+
+.Container {
+    height: 100%;
+    display: flex;
+}
+
+.SubContainer{
+    margin: auto;
+}

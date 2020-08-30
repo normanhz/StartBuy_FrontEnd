@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title  slot="start">Hola, <b>{{nombres}}</b></ion-title> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <section >
+    <ion-title  slot="start" style="color: black; font-weight: bold;">Bienvenido a tu empresa, <b style="color: green; font-weight: bold;">{{empresa}}</b></ion-title>
+  </section>
+<br>
+<br>
+<section >
+  <ion-title  slot="start" style="color: black;">Agrega anuncios o promociones de</ion-title>
+  <ion-title  slot="start" style="color: black;">tu empresa, para que tus clientes.</ion-title>
+  <ion-title  slot="start" style="color: black;">puedan ver en la aplicación.</ion-title>
+</section>
+<ion-grid>
+    
+  <ion-row class="row"> 
+    
+    <ion-col size="6" text-center>
+      <div style="margin: 0 auto;">
+        <ion-card  class="card"  padding color="success" text-center>
+          <div class="center-card">
+          <img class="EmpresaImage"  src="../../../../assets/img/anuncios.png">
+         </div>
+         <div class="center-card">
+          <h2 style="font-size: 1rem; text-align: center;"> Add News
+          </h2>
+          </div>
+        </ion-card>
+      </div>
+        
+    </ion-col>
+
+    
+  </ion-row>
+ 
+
+</ion-grid>
+
+</ion-content>

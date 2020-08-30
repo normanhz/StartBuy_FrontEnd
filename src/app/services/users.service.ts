@@ -11,9 +11,17 @@ import { IGender, IUser } from '../models/user.model';
 export class UsersService {
 
   headers = new HttpHeaders({'Content-Type' : 'application/json'});
-
+  IsAdmin: boolean;
   constructor(private http: HttpClient, public router: Router, public storage: Storage) { }
 
+  public SetIsAdmin(isadmin:boolean)
+  {
+    this.IsAdmin = isadmin;
+  }
+
+  public GetIsAdmin(){
+    return this.IsAdmin;
+  }
 
   UserLogin(user, password) {
     // return this.http.get(`${this.endpoint}userlogin.php?email=${email}&password=${password}`);
@@ -50,6 +58,7 @@ export class UsersService {
 
   logout() {
     this.storage.remove('userAuth');
+    this.storage.clear();
   }
 
 }

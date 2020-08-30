@@ -13,12 +13,17 @@
                   <ion-input style="color: black;" type="password" formControlName="user_password" class="form-controll" required>
                   </ion-input>
               </ion-item>
+              <br>
+              <div class="ion-float-left">  
+                <ion-checkbox color="success" formControlName="isadmin"  checked="false" style="align-content: center;"></ion-checkbox> &nbsp;<ion-label class="coloradmin">Admin Access</ion-label>
+              </div>
+              <br>
               <p class= "ion-text-center"  style="color: black;"><b>¡Olvide la contraseña!</b></p>
               <h2 class="ion-text-center"> </h2>
           </form>
           <ion-button color="medium" style="color: green;" expand="block" (click)="login()" [disabled]="loginForm.invalid">Inicia Sesión</ion-button>
           <p class="ion-text-center"  style="color: black;">¿No te has registrado? <b (click)="goRegister()"> Regístrate</b></p>
-          <!-- <p class="ion-text-center">¿Tienes un Salón? <b (click)="gosalonRegister()"> Únete</b></p> -->
+          <p class="ion-text-center" style="color: black;">¿Quieres ser socio? <b (click)="goAsociar()"> Enviar solicitud</b></p>
       </div>
   </div>
 </ion-content>

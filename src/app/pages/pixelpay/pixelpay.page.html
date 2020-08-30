@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Método de pago</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img class="logo" src="../../../../assets/img/Pixelpayv2.png">
+
+  <div class="designdiv1">
+    <h2 style="font-size: 14px; text-align: center; padding-top: 4px;">Ingrese su número de tarjeta</h2>
+  </div>
+  <div class="designdiv2">
+    <br>
+    <div style="padding-left: 10px; width: 75%; float:left">
+      <ion-input class="input1" style="padding-left: 30px; height: 1.5em;" ><ion-icon color="success" name="arrow-forward-circle-outline"></ion-icon> &nbsp; 5542 4406 0588 7900 </ion-input>
+   </div>
+   
+   <div style="width: 25%; float:right">
+    <ion-input class="input2" style=" height: 0.9em; padding-right: 30px; font-size: 25px;  font-family:Century Schoolbook; font-style: italic;" > VISA </ion-input>
+   </div>
+
+   <br>
+   <br>
+   <br>
+
+   <div style="width: 55%; float:left; padding-left: 25px; padding-right: 15px;">
+     <ion-input> 08 / 22</ion-input>
+   </div>
+   <!-- <div style="width: 10%; font-size: 10px; margin: 0 auto; text-align:center;">
+      0000 THRU
+  </div> -->
+  <div style="width: 25%; float:right;  padding-right: 5px;">
+    <ion-input> 295  &nbsp;<ion-icon color="white" name="help-circle-outline"></ion-icon></ion-input>
+  </div>
+
+  <br>
+  <div style="padding-left: 25px;">
+    <ion-input> SIMULACIÓN DE PAGO </ion-input>
+  </div>
+ 
+  </div>
+  
+  <div class="designdiv3">
+
+    <br>
+    <div class="designdiv4">
+      <h2 style="font-size: 16px; font-weight: bold; text-align: center; padding-top: 4px;">{{nombres}}</h2>
+    </div>
+    <div class="designdiv5">
+      <h2 style="font-size: 9px; text-align: center;">{{correo}}</h2>
+    </div>
+    <br>
+    <div style="padding-left: 10px; width: 65%; float:left">
+      <ion-input class="input3" style="padding-left: 30px; height: 1.5em;" > Total:  </ion-input>
+   </div>
+   
+   <div style="width: 35%; float:right">
+    <ion-input class="input3" style="padding-left: 30px; height: 1.5em;" >L. {{TotalPagar}}  </ion-input>
+   </div>
+   <br>
+   <div style="padding-left: 10px; width: 65%; float:left">
+     <ion-input class="input3" style="padding-left: 30px; height: 1.5em;" > SubTotal:  </ion-input>
+  </div>
+  
+  <div style="width: 35%; float:right">
+   <ion-input class="input3" style="padding-left: 30px; height: 1.5em;" >L. {{SubTotal}}  </ion-input>
+  </div>
+  <br>
+  <div style="padding-left: 10px; width: 65%; float:left">
+    <ion-input class="input3" style="padding-left: 30px; height: 1.5em;" > Impuesto:  </ion-input>
+ </div>
+ 
+ <div style="width: 35%; float:right">
+  <ion-input class="input3" style="padding-left: 30px; height: 1.5em;" >L. {{Impuesto}}  </ion-input>
+ </div>
+
+ <br>
+ <br>
+ <div class="designdiv4">
+   <h2 style="font-size: 20px; font-weight: bold; text-align: center; padding-top: 4px;">L. {{TotalPagar}} </h2>
+ </div>
+
+  <br>
+  <br>
+  <div class="designdiv6">  
+    <ion-checkbox ></ion-checkbox> &nbsp;<b style="font-size: 10px; font-weight: bold;">Acepto términos y condiciones</b>
+  </div>
+  </div>
+  <br>
+  <div style="margin: 0 auto; width:30%;">
+    <ion-button (click)="Pagar()"  class="buttonPagar">
+      <ion-icon name="card" ></ion-icon>
+      &nbsp; Pagar
+    </ion-button>
+  </div>
+</ion-content>

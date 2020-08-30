@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Productos Vendidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="Container">
+    <div class="SubContainer">
+
+      <ion-card *ngFor="let item of productosvendidos"  color="transparent" class="card">
+        <ion-card-content >
+          <!-- <ion-card-header>
+            <ion-card-title class="ion-text-center"><b>{{item.empresa}}</b></ion-card-title>
+         
+          </ion-card-header> -->
+          <div  >
+            <ion-item lines="none" >
+              <ion-avatar class="ion-no-padding" slot="start">
+                <img style="margin-top: -25px;" [src]="item.producto_Image" />
+              </ion-avatar>
+              <ion-label>
+                <h3><b>Producto: {{item.producto}}</b></h3>
+                <h2>Precio: {{item.precio}}</h2>
+                <h2>Cantidad: {{item.cantidad}} </h2>
+                <h2>Total: {{item.total_Neto}} </h2>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+  </div>
+
+
+      
+  <div style="width: 50%; float: right;">
+    
+     <ion-input name="TotalC"  readonly style="color: black; font-weight: bold; ">
+        Total vendido: L. 6,497.50
+      </ion-input> 
+  </div>
+<br>
+
+
+</ion-content>

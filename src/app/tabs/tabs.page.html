@@ -1,14 +1,48 @@
+
 <ion-tabs class="tabs">
+<div *ngIf="IsAdmin">
+
+
+   <ion-tab-bar slot="bottom">
+
+
+    <ion-tab-button tab="adminhome">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    
+    <ion-tab-button tab="pendientes">
+      <ion-icon name="alert-circle"></ion-icon>
+      <ion-label>Pending</ion-label>
+    </ion-tab-button>
+
+    
+    <ion-tab-button tab="ventas">
+      <ion-icon name="bar-chart"></ion-icon>
+      <ion-label>Sales</ion-label>
+    </ion-tab-button>
+
+      <ion-tab-button tab="settings">
+        <ion-icon name="settings"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-tab-button>
+
+  </ion-tab-bar> 
+  </div>  
+
+  <div *ngIf="!IsAdmin">
 
   <ion-tab-bar slot="bottom">
+
     <ion-tab-button tab="home">
       <ion-icon name="home"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="promotions">
-      <ion-icon name="cash-outline"></ion-icon>
-      <ion-label>Promotions</ion-label>
+      <ion-icon name="newspaper"></ion-icon>
+      <ion-label>News</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="showcart">
@@ -21,8 +55,9 @@
       <ion-label>Settings</ion-label>
     </ion-tab-button>
 
+
   </ion-tab-bar>
 
-  
+</div>
 
 </ion-tabs>
