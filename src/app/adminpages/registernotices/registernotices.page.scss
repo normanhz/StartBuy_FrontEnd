@@ -1,3 +1,14 @@
 ion-content {
     --background: url('../../../assets/img/background4.jpg') no-repeat center center / cover;
 }
+
+
+.Container {
+    height: 100%;
+    display: flex;
+ }
+ 
+ .SubContainer{
+    margin: auto;
+ }
+ 

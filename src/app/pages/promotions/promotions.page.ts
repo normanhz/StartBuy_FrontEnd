@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/models/user.model';
 import { Storage } from '@ionic/storage';
+import { BusinessService } from '../../services/business.service';
+import { IAllNotices } from 'src/app/models/business.model';
 
 @Component({
   selector: 'app-promotions',
@@ -13,18 +14,23 @@ export class PromotionsPage implements OnInit {
 
   constructor(private router: Router,
     private usersService: UsersService,
-    private storage: Storage) { }
-  public user: IUser;
+    private storage: Storage,
+    // tslint:disable-next-line: no-shadowed-variable
+    public BusinessService: BusinessService) { }
   public userName: string;
   public nombres: string;
+  notices : IAllNotices[];
   ngOnInit() {
   }
 
   ionViewWillEnter() {
     this.storage.get('userAuth').then((data) => {
-      this.user = data
-      this.userName = this.user.usuario;
-      this.nombres = this.user.nombres;
+      this.userName = data.usuario;
+      this.nombres = data.nombres;
+    });
+
+    this.BusinessService.GetAllNews().subscribe((notices) => {
+      this.notices = notices;
     });
   }
 }

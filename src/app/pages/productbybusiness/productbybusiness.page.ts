@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from 'src/app/models/user.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController, LoadingController, IonSlides } from '@ionic/angular';
 import { BusinessService } from '../../services/business.service';
@@ -12,7 +11,6 @@ import { IProducts } from '../../models/business.model';
   styleUrls: ['./productbybusiness.page.scss'],
 })
 export class ProductbybusinessPage implements OnInit {
-  public user: IUser;
   products: any = [];
   public productoId :  number;
   public empresaId : number;
@@ -54,7 +52,6 @@ export class ProductbybusinessPage implements OnInit {
   getProductByBusiness() {
     this.BusinessService.getProductByBusiness(this.empresaId).subscribe((products) => {
       this.products = products;
-      console.log(this.products);
     });
   }
 

@@ -5,7 +5,40 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="IsAdmin">
+    <br>
+    <section >
+      <ion-title  slot="start" style="color: black; font-weight: bold;">Bienvenido a tu empresa, <b style="color: green; font-weight: bold;">{{empresa}}</b></ion-title>
+    </section>
   <br>
+  <br>
+<!-- <img class="logo" src="../../../../assets/img/Logo1.png"> -->
+<section >
+  <ion-title  slot="start" style="color: black;">Agrega anuncios o promociones de</ion-title>
+  <ion-title  slot="start" style="color: black;">tu empresa, para que tus clientes.</ion-title>
+  <ion-title  slot="start" style="color: black;">puedan ver en la aplicación.</ion-title>
+</section>
+<br>
+<div class="Container">
+  <div class="SubContainer">
+<div>
+    <ion-item lines="none" (click)="goNoticias()" class="card2">
+      <ion-icon style="color: black;" slot="start" name="newspaper"></ion-icon>
+      <ion-label style="color: black;"><b>Agregar Anuncios</b></ion-label>
+    </ion-item>
+</div>
+<div style="margin-top: 2%;">
+<ion-item lines="none" (click)="goviewProducts()" class="card2">
+      <ion-icon style="color: black;" slot="start" name="eye"></ion-icon>
+      <ion-label style="color: black;"><b>Ver Productos</b></ion-label>
+    </ion-item>
+</div> 
+  </div>
+</div>
+  </div>
+
+  <div *ngIf="!IsAdmin">
+    <br>
   <section >
     <ion-title  slot="start" style="color: green; font-weight: bold;">¿Qué estas buscando?</ion-title>
   </section>
@@ -32,6 +65,9 @@
    
  
   </ion-grid>
+  </div>
+
+  
 </ion-content>
 
 

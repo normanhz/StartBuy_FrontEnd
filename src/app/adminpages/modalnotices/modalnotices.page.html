@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/registernotices"></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="!IsModify">
+    <form [formGroup]="FormNotices">
+      <ion-item class="input">
+        <ion-label position="floating" style="color: black;">Descripción</ion-label>
+        <ion-textarea class="input" type="text-area" style="color: black;"  formControlName="notice_descripcion"></ion-textarea>
+    </ion-item>
+      
+    </form>
+    <ion-button expand="block" color="medium" style="color: green;" (click)="addinfo()" [disabled]="FormNotices.invalid">Agregar</ion-button>
+  </div>
+
+  <div *ngIf="IsModify">
+    <form [formGroup]="FormNotices" *ngFor="let item of notices">
+      <ion-item class="input">
+        <ion-label position="floating" style="color: black;">Descripción</ion-label>
+        <ion-textarea type="text-area"  [(ngModel)]="item.descripcion" style="color: black;" formControlName="notice_descripcion"></ion-textarea>
+    </ion-item>
+      
+    </form>
+    <ion-button expand="block" color="medium" style="color: green;" (click)="editinfo()" [disabled]="FormNotices.invalid">Modificar</ion-button>
+  </div>
+
+
+</ion-content>

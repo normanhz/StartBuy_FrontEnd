@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
-import { IUser } from 'src/app/models/user.model';
+import { IUsuarioPersona } from 'src/app/models/user.model';
 import { Storage } from '@ionic/storage';
 import { IGender } from '../../models/user.model';
 
@@ -94,7 +94,7 @@ export class RegisterPage implements OnInit {
       // this.registerForm.get('user_departamentoid').value,
       // this.registerForm.get('user_ciudadid').value,
       this.registerForm.get('user_direccioncompleta').value,
-      this.registerForm.get('user_telefono').value).subscribe((user: IUser) => {
+      this.registerForm.get('user_telefono').value).subscribe((user: IUsuarioPersona) => {
         loading.dismiss();
         this.router.navigate(['/verification'], {queryParams: {UsuarioPersonaId: user.usuarioPersonaId}});
       }, (error) => {

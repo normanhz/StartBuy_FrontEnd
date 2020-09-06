@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="Container">
+    <div class="SubContainer">
+      <img class="logo" src="../../../../assets/img/Logo1.png">
+      <h2 class="ion-text-center" style="color: green; font-weight: bold;">¡Hola <b>{{nombres}}</b>!</h2>
+
+      <ion-item lines="none" (click)="GoEditInfo()" class="card">
+        <ion-icon style="color: black;" slot="end" name="newspaper"></ion-icon>
+        <ion-label style="color: black;"><b>Actualizar Información</b></ion-label>
+      </ion-item>
+
+
+      <ion-item lines="none" (click)="logout()" class="card">
+        <ion-icon style="color: black;" slot="end" name="log-out"></ion-icon>
+        <ion-label style="color: black;"><b>Cerrar Sesión</b></ion-label>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>
+

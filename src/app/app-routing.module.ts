@@ -83,6 +83,22 @@ const routes: Routes = [
   {
     path: 'enviarsolicitud',
     loadChildren: () => import('./adminpages/enviarsolicitud/enviarsolicitud.module').then( m => m.EnviarsolicitudPageModule)
+  },
+  {
+    path: 'modalnotices',
+    loadChildren: () => import('./adminpages/modalnotices/modalnotices.module').then( m => m.ModalnoticesPageModule)
+  },
+  {
+    path: 'viewproducts',
+    loadChildren: () => import('./adminpages/viewproducts/viewproducts.module').then( m => m.ViewproductsPageModule)
+  },
+  {
+    path: 'adminsettings',
+    loadChildren: () => import('./adminpages/adminsettings/adminsettings.module').then( m => m.AdminsettingsPageModule)
+  },
+  {
+    path: 'editadmininfo',
+    loadChildren: () => import('./adminpages/editadmininfo/editadmininfo.module').then( m => m.EditadmininfoPageModule)
   }
 ];
 @NgModule({

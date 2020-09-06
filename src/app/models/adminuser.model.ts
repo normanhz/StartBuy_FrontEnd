@@ -1,4 +1,4 @@
-export interface IAdminUser {
+export interface IUsuariosAsociados {
     usuarioAsociadoId: number,
     usuario: string,
     nombres: string,
@@ -12,7 +12,8 @@ export interface IAdminUser {
     direccionCompleta: string,
     telefono: number,
     nombreEmpresa: string,
-    empresaId: number
+    empresaId: number,
+    confirmadoPorGerencia: boolean
 
 }
 

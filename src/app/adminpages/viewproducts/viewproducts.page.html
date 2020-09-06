@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar  
+    (ionInput)="filterCards($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+   
+  <div class="Container">
+    <section>
+    <ion-title  slot="start" style="margin-top: 2%; color: black; font-weight: bold;">Listado de productos</ion-title>
+      <ion-label  slot="start" style="padding-left: 5%; padding-right: 1.5%; font-size: 14px; color: black;">Puedes activar/inactivar cualquier producto al instante.</ion-label>
+    </section>
+    <div class="SubContainer">
+      <ion-card *ngFor="let item of productoschange"  color="transparent" class="card">
+        <ion-card-content >
+          <!-- <ion-card-header>
+            <ion-card-title class="ion-text-center"><b>{{item.empresa}}</b></ion-card-title>
+         
+          </ion-card-header> -->
+          <div  >
+            <ion-item  >
+              <ion-avatar class="ion-no-padding" slot="start">
+                <img style="margin-top: -25px;" [src]="item.productoImage" />
+              </ion-avatar>
+              <ion-label>
+                <h3><b>Producto: <ion-label>{{item.producto}}</ion-label></b></h3>
+                <h2> <ion-button color="success"  class="design">
+                  <ion-checkbox color="success" [(ngModel)]="item.estado" (ionChange)="changeEstado($event, item.productoId)"></ion-checkbox>
+                  &nbsp;Estado</ion-button></h2>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+  </div>
+
+
+<br>
+
+
+</ion-content>

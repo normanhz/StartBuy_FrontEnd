@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { IAdminUser } from 'src/app/models/adminuser.model';
+import { AdminuserService } from '../../adminservices/adminuser.service';
+import { IUsuariosAsociados } from 'src/app/models/adminuser.model';
+import { Router } from '@angular/router';
+import { INotices } from '../../models/adminbusiness.model';
 
 @Component({
   selector: 'app-adminhome',
@@ -8,21 +11,31 @@ import { IAdminUser } from 'src/app/models/adminuser.model';
   styleUrls: ['./adminhome.page.scss'],
 })
 export class AdminhomePage implements OnInit {
-  public user: IAdminUser;
   public userName: string;
   public nombres: string;
   public empresa: string;
-  constructor(private storage: Storage,) { }
+  usuariosocio= new Array<IUsuariosAsociados>();
+  constructor(private storage: Storage,
+    // tslint:disable-next-line: no-shadowed-variable
+    private AdminuserService: AdminuserService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
   ionViewWillEnter() {
     this.storage.get('userAuth').then((data) => {
-      this.user = data
-      this.userName = this.user.usuario;
-      this.nombres = this.user.nombres;
-      this.empresa = this.user.nombreEmpresa;
+      this.userName = data.usuario;
+      this.nombres = data.nombres;
+
+      this.AdminuserService.GetInfoUsuarioSocio(data.usuario, data.email).subscribe((usuariosocio)=>{
+        this.usuariosocio = usuariosocio;
+        this.empresa = this.usuariosocio[0].nombreEmpresa;
+      })
     });
+  }
+
+  goNoticias(){
+    this.router.navigate(['/registernotices']);
   }
 }

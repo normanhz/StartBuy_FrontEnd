@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/models/user.model';
 import { Storage } from '@ionic/storage';
 import { IProductsInCart } from 'src/app/models/business.model';
 import { DecimalPipe } from '@angular/common';
 import { AlertController } from '@ionic/angular';
 import { AdminbusinessService } from '../../adminservices/adminbusiness.service';
 import { IProductosVendidos } from 'src/app/models/adminbusiness.model';
+import { AdminuserService } from 'src/app/adminservices/adminuser.service';
+import { IUsuariosAsociados } from 'src/app/models/adminuser.model';
 
 @Component({
   selector: 'app-ventas',
@@ -18,40 +19,41 @@ export class VentasPage  implements OnInit {
   productosvendidos = new Array<IProductosVendidos>();
   empresaId: number;
   TotalCompra: any;
+  usuariosocio= new Array<IUsuariosAsociados>();
   constructor(private router: Router,
     private usersService: UsersService,
     // tslint:disable-next-line: no-shadowed-variable
     public adminBusinessService: AdminbusinessService,
     public alertController: AlertController,
+    private adminUserService: AdminuserService,
     private storage: Storage) { }
-  public user: IUser;
   public userName: string;
   public nombres: string;
   ngOnInit() {
   }
 
-  // DeleteProductInCart(event){
-  //   this.BusinessService.deleteProductInCart(event).subscribe((data) => {
-  //     this.ionViewWillEnter();
-  //   });
-  // }
+
 
   ionViewWillEnter() {
     this.productosvendidos = [];
     this.storage.get('userAuth').then((data) => {
-      this.user = data
-      this.userName = this.user.usuario;
-      this.nombres = this.user.nombres;
-      this.empresaId = 17;
-      this.getProductosVendidos();
+      this.userName = data.usuario;
+      this.nombres = data.nombres;
+
+
+      this.adminUserService.GetInfoUsuarioSocio(data.usuario, data.email).subscribe((usuariosocio)=>{
+        this.usuariosocio = usuariosocio;
+        this.empresaId = this.usuariosocio[0].empresaId;
+
+        this.getProductosVendidos();
+      })
       // tslint:disable-next-line: comment-format
       //this. getTotalCompraByUserId();
     });
   }
 
   getProductosVendidos() {
-  // console.log(this.productsInCart);
-  //  const isv = 0.15;
+
     this.adminBusinessService.getProductosVendidos(this.empresaId).subscribe((products) => {
       this.productosvendidos = products;
       console.log(this.productosvendidos);

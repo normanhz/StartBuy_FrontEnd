@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/models/user.model';
 import { Storage } from '@ionic/storage';
 import { IProductsInCart } from 'src/app/models/business.model';
 import { DecimalPipe } from '@angular/common';
 import { AlertController } from '@ionic/angular';
 import { AdminbusinessService } from '../../adminservices/adminbusiness.service';
 import { IProductosVendidos } from 'src/app/models/adminbusiness.model';
+import { AdminuserService } from '../../adminservices/adminuser.service';
+import { IUsuariosAsociados } from '../../models/adminuser.model';
 
 @Component({
   selector: 'app-pendientes',
@@ -18,33 +19,37 @@ export class PendientesPage  {
   productosvendidos = new Array<IProductosVendidos>();
   empresaId: number;
   TotalCompra: any;
+  public userName: string;
+  public nombres: string;
+  usuariosocio= new Array<IUsuariosAsociados>();
   constructor(private router: Router,
-    private usersService: UsersService,
+    private adminUserService: AdminuserService,
     // tslint:disable-next-line: no-shadowed-variable
     public adminBusinessService: AdminbusinessService,
     public alertController: AlertController,
     private storage: Storage) { }
-  public user: IUser;
-  public userName: string;
-  public nombres: string;
+
 
 
   ionViewWillEnter() {
     this.productosvendidos = [];
     this.storage.get('userAuth').then((data) => {
-      this.user = data
-      this.userName = this.user.usuario;
-      this.nombres = this.user.nombres;
-      this.empresaId = 17;
-      this.getProductosVendidos();
+      this.userName = data.usuario;
+      this.nombres = data.nombres;
+
+      this.adminUserService.GetInfoUsuarioSocio(data.usuario, data.email).subscribe((usuariosocio)=>{
+        this.usuariosocio = usuariosocio;
+        this.empresaId = this.usuariosocio[0].empresaId;
+
+        this.getProductosPendientes();
+      })
     });
   }
 
-  getProductosVendidos() {
+  getProductosPendientes() {
 
     this.adminBusinessService.getProductosPendientes(this.empresaId).subscribe((products) => {
       this.productosvendidos = products;
-      console.log(this.productosvendidos);
     });
   }
 

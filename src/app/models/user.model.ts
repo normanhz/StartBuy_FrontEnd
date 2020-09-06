@@ -1,4 +1,4 @@
-export interface IUser {
+export interface IUsuarioPersona {
     usuarioPersonaId: number,
     usuario: string,
     nombres: string,
@@ -22,4 +22,13 @@ export interface IGender{
     generoId: number,
     genero: string
 };
+
+export interface IUsuario {
+    usuarioId: number,
+    usuario: string,
+    nombres: string,
+    email: string,
+    password: string,
+    isAdmin: boolean
+}
 

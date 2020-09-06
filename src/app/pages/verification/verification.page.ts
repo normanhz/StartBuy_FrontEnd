@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
-import { IUser } from 'src/app/models/user.model';
+import { IUsuarioPersona } from 'src/app/models/user.model';
 import { IonicStorageModule } from '@ionic/storage';
 import { Storage } from '@ionic/storage';
 
@@ -43,7 +43,7 @@ export class VerificationPage implements OnInit {
     });
     await loading.present();
     const verificationcode = this.verificationForm.get('code').value;
-    this.userService.verifyUser(this.usuarioId, verificationcode).subscribe((user: IUser) => {
+    this.userService.verifyUser(this.usuarioId, verificationcode).subscribe((user: IUsuarioPersona) => {
       loading.dismiss();
       // tslint:disable-next-line: comment-format
       this.storage.set('userAuth', user);

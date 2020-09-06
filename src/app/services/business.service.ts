@@ -57,4 +57,8 @@ export class BusinessService {
     return this.http.post(`${environment.API_URL}Business/CalcularGanancias`, {UsuarioComprador: JSON.parse(UsuarioComprador)}, {headers : this.headers});
   }
 
+  GetAllNews() {
+    // tslint:disable-next-line: max-line-length
+    return this.http.get<any>(`${environment.API_URL}Business/GetAllNews/`, {headers:this.headers});
+  }
 }

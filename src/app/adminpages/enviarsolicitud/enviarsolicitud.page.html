@@ -3,7 +3,7 @@
       <div class="SubContainer">
         <img class="logo" src="../../../../assets/img/Logo1.png">
           <h2 class="ion-text-center" style="color: green; font-weight: bold;">Envío de solicitud</h2>
-          <form [formGroup]="registerForm">
+          <form [formGroup]="solicitudForm">
             <ion-item class="input">
               <ion-label position="floating" style="color: black;">Usuario</ion-label>
               <ion-input type="text" style="color: black;" formControlName="user_usuario"></ion-input>
@@ -58,7 +58,7 @@
               </ion-item>
               <p class="ion-text-center"> <b></b></p>
           </form>
-          <ion-button expand="block" color="medium" style="color: green;" (click)="register()" [disabled]="registerForm.invalid">Enviar solicitud</ion-button>
+          <ion-button expand="block" color="medium" style="color: green;" (click)="register()" [disabled]="solicitudForm.invalid">Enviar solicitud</ion-button>
           <p class="ion-text-center" style="color: green;">¿Ya estas asociado? <b (click)="goLogin()"> Inicia Sesión</b></p>
       </div>
   </div>

@@ -43,3 +43,17 @@ export interface IProductos
     productoImage: string
 }
 
+export interface IAllNotices
+{
+    empresaId: number,
+    empresa: string,
+    noticias: INoticess,
+    noticiaID: number,
+    descripcion: string
+}
+
+export interface INoticess
+{
+    noticiaID: number,
+    descripcion: string
+}

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IBusiness } from 'src/app/models/business.model';
-import { IUser } from '../../models/user.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { BusinessService } from '../../services/business.service';
@@ -15,7 +14,6 @@ import { isNgTemplate } from '@angular/compiler';
 export class BusinessbycategoryPage implements OnInit {
   public categoriaEmpresaId :  number;
   business: IBusiness[] = [];
-  public user: IUser;
   public filtername : string;
   constructor(
     private router: Router,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BusinessService } from '../../services/business.service';
 import { Storage } from '@ionic/storage';
-import { IUser } from 'src/app/models/user.model';
+import { IUsuarioPersona } from 'src/app/models/user.model';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./pixelpay.page.scss'],
 })
 export class PixelpayPage implements OnInit {
-  public user: IUser;
+  public user: IUsuarioPersona;
   public correo: string;
   public nombres: string;
   public TotalPagar : any;

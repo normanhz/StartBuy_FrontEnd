@@ -1,0 +1,42 @@
+<ion-content class="ion-padding ion-text-center">
+  <div class="Container">
+      <div class="SubContainer">
+        <img class="logo" src="../../../../assets/img/Logo1.png">
+          <h2 class="ion-text-center" style="color: green; font-weight: bold;">Actualiza tu Información</h2>
+          <form [formGroup]="admineditinfoForm" *ngFor="let item of users">
+            <ion-item class="input">
+              <ion-label position="floating" style="color: black;">Usuario</ion-label>
+              <ion-input type="text" style="color: black;" [(ngModel)]="item.usuario" formControlName="user_usuario"> </ion-input>
+          </ion-item>
+            
+              <ion-item class="input">
+                  <ion-label position="floating" style="color: black;">Nombres</ion-label>
+                  <ion-input type="text" style="color: black;" [(ngModel)]="item.nombres" formControlName="user_nombres"></ion-input>
+              </ion-item>
+
+              <ion-item class="input">
+                  <ion-label position="floating" style="color: black;">Apellidos</ion-label>
+                  <ion-input type="text" style="color: black;" [(ngModel)]="item.apellidos" formControlName="user_apellidos"></ion-input>
+              </ion-item>
+
+              <ion-item class="input">
+                  <ion-label position="floating" style="color: black;">Correo</ion-label>
+                  <ion-input type="text" style="color: black;" [(ngModel)]="item.email" (ionBlur)="validarEmail($event)" formControlName="user_email"></ion-input>
+              </ion-item>
+            
+
+            <ion-item class="input">
+              <ion-label position="floating" style="color: black;">Dirección Completa</ion-label>
+              <ion-input type="text" style="color: black;" [(ngModel)]="item.direccionCompleta" formControlName="user_direccioncompleta"></ion-input>
+          </ion-item>
+
+              <ion-item class="input">
+                  <ion-label position="floating" style="color: black;">Teléfono</ion-label>
+                  <ion-input type="number" style="color: black;" [(ngModel)]="item.telefono" formControlName="user_telefono"></ion-input>
+              </ion-item>
+              <p class="ion-text-center"> <b></b></p>
+          </form>
+          <ion-button expand="block" color="medium" style="color: green;" (click)="editinfo()">Actualiza tu Información</ion-button>
+      </div>
+  </div>
+</ion-content>

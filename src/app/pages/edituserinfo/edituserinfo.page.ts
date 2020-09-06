@@ -3,9 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
-import { IUser } from 'src/app/models/user.model';
 import { Storage } from '@ionic/storage';
-import { IGender } from '../../models/user.model';
+import { IGender, IUsuarioPersona } from '../../models/user.model';
 
 @Component({
   selector: 'app-edituserinfo',
@@ -13,7 +12,7 @@ import { IGender } from '../../models/user.model';
   styleUrls: ['./edituserinfo.page.scss'],
 })
 export class EdituserinfoPage implements OnInit {
-  users: IUser[] = [];
+  users: IUsuarioPersona[] = [];
   public userid :  number;
   usereditinfoForm: FormGroup;
   constructor(
@@ -51,7 +50,13 @@ export class EdituserinfoPage implements OnInit {
 
    ionViewDidEnter()
   {
-    this.GetUsersById();
+    this.storage.get('userAuth').then((data) => {
+      this.usersService.GetInfoUsuarioPersona(data.usuario, data.email).subscribe((usuariopersona)=>{
+        this.users = usuariopersona;
+      })
+
+    });
+
   }
 
   async presentAlert(msj) {
@@ -74,7 +79,7 @@ export class EdituserinfoPage implements OnInit {
       this.usereditinfoForm.get('user_apellidos').value,
       this.usereditinfoForm.get('user_email').value,
       this.usereditinfoForm.get('user_direccioncompleta').value,
-      this.usereditinfoForm.get('user_telefono').value).subscribe((user:IUser[]) => {
+      this.usereditinfoForm.get('user_telefono').value).subscribe((user:IUsuarioPersona[]) => {
         loading.dismiss();
         this.presentAlert('La información del usuario ha sido actualizado correctamente.');
         this.logout();
@@ -89,13 +94,6 @@ export class EdituserinfoPage implements OnInit {
   logout(){
     this.usersService.logout();
     this.router.navigate(['/login']);
-  }
-
-  GetUsersById(){
-       this.usersService.GetUsersById(this.userid).subscribe((data) => {
-          // tslint:disable-next-line: no-angle-bracket-type-assertion
-          this.users = data;
-       });
   }
 
   validarEmail(event) {

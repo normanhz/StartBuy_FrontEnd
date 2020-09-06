@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/models/user.model';
+import { IUsuarioPersona } from 'src/app/models/user.model';
 import { Storage } from '@ionic/storage';
 import { BusinessService } from '../../services/business.service';
 import { IProductsInCart } from 'src/app/models/business.model';
 import { DecimalPipe } from '@angular/common';
 import { AlertController } from '@ionic/angular';
+import { IUsuario } from '../../models/user.model';
 
 @Component({
   selector: 'app-cart',
@@ -16,15 +17,16 @@ import { AlertController } from '@ionic/angular';
 export class CartPage implements OnInit {
   productsInCart = new Array<IProductsInCart>();
   TotalCompra: any;
+  userName: string;
+  nombres: string;
+  userid : number;
+  usuariopersona= new Array<IUsuarioPersona>();
   constructor(private router: Router,
     private usersService: UsersService,
     // tslint:disable-next-line: no-shadowed-variable
     public BusinessService: BusinessService,
     public alertController: AlertController,
     private storage: Storage) { }
-  public user: IUser;
-  public userName: string;
-  public nombres: string;
 
   ngOnInit() {
   }
@@ -38,26 +40,28 @@ export class CartPage implements OnInit {
   ionViewWillEnter() {
     this.productsInCart = [];
     this.storage.get('userAuth').then((data) => {
-      this.user = data
-      this.userName = this.user.usuario;
-      this.nombres = this.user.nombres;
+      this.userName = data.usuario;
+      this.nombres = data.nombres;
 
-      this.getProductsInCart();
-      this. getTotalCompraByUserId();
+      this.usersService.GetInfoUsuarioPersona(data.usuario, data.email).subscribe((usuariopersona)=>{
+        this.usuariopersona = usuariopersona;
+        this.userid = this.usuariopersona[0].usuarioPersonaId;
+
+        this.getProductsInCart();
+        this. getTotalCompraByUserId();
+      })
+
     });
   }
 
   getProductsInCart() {
-  // console.log(this.productsInCart);
-  //  const isv = 0.15;
-    this.BusinessService.getProductsInCart(this.user.usuarioPersonaId).subscribe((products) => {
+    this.BusinessService.getProductsInCart(this.userid).subscribe((products) => {
       this.productsInCart = products;
-      console.log(this.productsInCart);
     });
   }
 
   getTotalCompraByUserId() {
-      this.BusinessService.getTotalCompraByUserId(this.user.usuarioPersonaId).subscribe((data) => {
+      this.BusinessService.getTotalCompraByUserId(this.userid).subscribe((data) => {
         this.TotalCompra = Math.round(data).toFixed(2);
       });
     }

@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
-import { IUser } from 'src/app/models/user.model';
 import { Storage } from '@ionic/storage';
 import { IGender } from '../../models/user.model';
+import { IUsuariosAsociados } from '../../models/adminuser.model';
+import { AdminuserService } from '../../adminservices/adminuser.service';
 
 
 @Component({
@@ -15,16 +16,17 @@ import { IGender } from '../../models/user.model';
 })
 export class EnviarsolicitudPage implements OnInit {
   generos: IGender[] = [];
-  registerForm: FormGroup;
+  solicitudForm: FormGroup;
   constructor
   (
     private router: Router,
     private storage: Storage,
+    private adminuserService: AdminuserService,
     private usersService: UsersService,
     public alertController: AlertController,
     public formBuilder: FormBuilder,
     public loadingController: LoadingController
-  ){ this.registerForm = this.formBuilder.group({
+  ){ this.solicitudForm = this.formBuilder.group({
     user_usuario: new FormControl('', Validators.compose([
       Validators.required,
       ])), user_nombres: new FormControl('', Validators.compose([
@@ -85,27 +87,26 @@ export class EnviarsolicitudPage implements OnInit {
   }
 
   async register() {
-    this.registerForm.reset();
-    this.succesAlert('La socilitud ha sido enviada con éxito, un asesor se pondrá en contacto contigo.');
-    // const loading = await this.loadingController.create({
-    // });
-    // await loading.present();
-    // this.usersService.userRegister(
-    //   this.registerForm.get('user_usuario').value,
-    //   this.registerForm.get('user_nombres').value,
-    //   this.registerForm.get('user_apellidos').value,
-    //   this.registerForm.get('user_email').value,
-    //   this.registerForm.get('user_generoid').value,
-    //   this.registerForm.get('user_empresa').value,
-    //   this.registerForm.get('user_password').value,
-    //   this.registerForm.get('user_direccioncompleta').value,
-    //   this.registerForm.get('user_telefono').value).subscribe((user: IUser) => {
-    //     loading.dismiss();
-    //     this.succesAlert('La socilitud ha sido enviada con éxito.');
-    //   }, (error) => {
-    //     loading.dismiss();
-    //     this.presentAlert('El correo o usuario ya esta asociado a una cuenta activa.');
-    //   });
+    const loading = await this.loadingController.create({
+    });
+    await loading.present();
+    this.adminuserService.solicitudRegistration(
+      this.solicitudForm.get('user_usuario').value,
+      this.solicitudForm.get('user_nombres').value,
+      this.solicitudForm.get('user_apellidos').value,
+      this.solicitudForm.get('user_email').value,
+      this.solicitudForm.get('user_generoid').value,
+      this.solicitudForm.get('user_password').value,
+      this.solicitudForm.get('user_direccioncompleta').value,
+      this.solicitudForm.get('user_telefono').value,
+      this.solicitudForm.get('user_empresa').value).subscribe((user: IUsuariosAsociados) => {
+        loading.dismiss();
+        this.succesAlert('La socilitud ha sido enviada con éxito, un asesor se pondrá en contacto contigo.');
+        this.router.navigate(['/login']);
+      }, (error) => {
+        loading.dismiss();
+        this.presentAlert('El correo o usuario ya esta asociado a una cuenta activa.');
+      });
   }
 
   getGenders(){

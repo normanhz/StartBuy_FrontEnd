@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/services/users.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-tabs',
@@ -11,14 +11,15 @@ export class TabsPage{
  // tslint:disable-next-line: no-inferrable-types
  public IsAdmin: boolean;
   constructor(
-    private usersService: UsersService
+    private storage: Storage,
   ) {
   }
 
 
   ionViewWillEnter(){
-    this.IsAdmin= this.usersService.GetIsAdmin();
-    console.log(this.IsAdmin);
+    this.storage.get('userAuth').then((data) => {
+      this.IsAdmin= data.isAdmin;
+    });
   }
 
 }

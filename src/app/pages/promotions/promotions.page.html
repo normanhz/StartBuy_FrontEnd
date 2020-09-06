@@ -1,17 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Notices</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <div class="Container">
-    <div class="SubContainer">
+  <h1  style="color: black; font-weight: bold;" class="ion-text-center font-weight: bold;"><h2 style="font-weight: bold;">Anuncios</h2></h1>
 
-      <ion-item lines="none" class="card">
-        <ion-icon style="color: black;" slot="end"></ion-icon>
-        <ion-label style="color: black;"><b>Page under construction by Norman...</b></ion-label>
+  <ion-label *ngFor="let item of notices"   style="color: green; font-weight: bold;"><h2 style="padding-left:20px; font-weight: bold;">{{item.empresa}}</h2>
+    <div>
+      <ion-item  style="margin-top: 2%;"  *ngFor="let notices of item.noticias" lines="none" class="card2">
+        <ion-input style="color: black;"><b>{{notices.descripcion}}</b></ion-input>
       </ion-item>
-    </div>
   </div>
+    </ion-label>
 </ion-content>

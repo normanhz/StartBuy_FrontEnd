@@ -1,17 +1,30 @@
 export interface IProductosVendidos{
-    ventaProductoId: number,
-    productoId: number,
-    products: IProductos;
+    empresaId: number,
+    empresa: string,
+    producto_Image: string,
+    producto: string;
     precio: number,
     cantidad: number,
-    total: number,
-    totalCompra: number
+    total_neto: number,
+    fecha: Date
 };
 
-export interface IProductos
+
+export interface INotices
 {
-    producto: string,
-    descripcion: string,
-    productoImage: string
+    noticiaID: number,
+    empresaId: number,
+    descripcion: string
 }
 
+export interface IProductosChange{
+    productoId: number,
+    producto: string,
+    descripcion: string,
+    productoImage: string,
+    empresaId: number,
+    categoriaProductoId: number,
+    precio: number,
+    cantidadEnStock: number,
+    estado: boolean
+}

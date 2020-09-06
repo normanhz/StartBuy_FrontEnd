@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from 'src/app/models/user.model';
+import { IUsuarioPersona } from 'src/app/models/user.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController, LoadingController, IonSlides } from '@ionic/angular';
 import { BusinessService } from '../../services/business.service';
 import { Storage } from '@ionic/storage';
 import { IProducts } from '../../models/business.model';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-detailproduct',
@@ -13,19 +14,20 @@ import { IProducts } from '../../models/business.model';
 })
 export class DetailproductPage implements OnInit {
   public currentNumber: number;
-  public user: IUser;
   public userName: string;
   public nombres: string;
   products: IProducts[] = [];
   public productoId :  number;
   alert: any;
   cantidadEnStock: number;
+  usuariopersona= new Array<IUsuarioPersona>();
   constructor(private router: Router,
     private route: ActivatedRoute,
     public alertController: AlertController,
     // tslint:disable-next-line: no-shadowed-variable
     public BusinessService: BusinessService,
     public loadingController: LoadingController,
+    private usersService: UsersService,
     public storage: Storage) {
       // tslint:disable-next-line: no-string-literal
       this.productoId = this.route.snapshot.queryParams['productoId'];
@@ -37,9 +39,13 @@ export class DetailproductPage implements OnInit {
 
   ionViewWillEnter() {
     this.storage.get('userAuth').then((data) => {
-      this.user = data
-      this.userName = this.user.usuario;
-      this.nombres = this.user.nombres;
+      this.userName = data.usuario;
+      this.nombres = data.nombres;
+
+      this.usersService.GetInfoUsuarioPersona(data.usuario, data.email).subscribe((usuariopersona)=>{
+        this.usuariopersona = usuariopersona;
+      })
+
     });
 
     this.currentNumber = 0;
@@ -144,8 +150,8 @@ export class DetailproductPage implements OnInit {
     this.BusinessService.SaveProductsToCart(
       this.products[0].productoId,
       this.currentNumber,
-      this.user.usuarioPersonaId
-    ).subscribe((user: IUser) => {
+      this.usuariopersona[0].usuarioPersonaId
+    ).subscribe((user: IUsuarioPersona) => {
         loading.dismiss();
         this.SuccessAlert('Producto agregado al carrito exitosamente.');
         this.currentNumber = 0;
