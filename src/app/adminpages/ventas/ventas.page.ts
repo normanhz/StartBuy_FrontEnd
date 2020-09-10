@@ -18,7 +18,7 @@ import { IUsuariosAsociados } from 'src/app/models/adminuser.model';
 export class VentasPage  implements OnInit {
   productosvendidos = new Array<IProductosVendidos>();
   empresaId: number;
-  TotalCompra: any;
+  Totalvendido: any;
   usuariosocio= new Array<IUsuariosAsociados>();
   constructor(private router: Router,
     private usersService: UsersService,
@@ -46,9 +46,8 @@ export class VentasPage  implements OnInit {
         this.empresaId = this.usuariosocio[0].empresaId;
 
         this.getProductosVendidos();
+        this.getTotalVendidoByEmpresa();
       })
-      // tslint:disable-next-line: comment-format
-      //this. getTotalCompraByUserId();
     });
   }
 
@@ -56,15 +55,14 @@ export class VentasPage  implements OnInit {
 
     this.adminBusinessService.getProductosVendidos(this.empresaId).subscribe((products) => {
       this.productosvendidos = products;
-      console.log(this.productosvendidos);
     });
   }
 
-  // getTotalCompraByUserId() {
-  //     this.BusinessService.getTotalCompraByUserId(this.user.usuarioPersonaId).subscribe((data) => {
-  //       this.TotalCompra = Math.round(data).toFixed(2);
-  //     });
-  //   }
+  getTotalVendidoByEmpresa() {
+    this.adminBusinessService.getTotalVendidoByEmpresa(this.empresaId).subscribe((totalvendido) => {
+      this.Totalvendido = Math.round(totalvendido).toFixed(2);
+    });
+  }
 
     async SuccessAlert(msj) {
       const alert = await this.alertController.create({

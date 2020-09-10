@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { IUsuarioPersona } from 'src/app/models/user.model';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-pixelpay',
@@ -11,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./pixelpay.page.scss'],
 })
 export class PixelpayPage implements OnInit {
-  public user: IUsuarioPersona;
+  public user: IUsuarioPersona[] = [];
   public correo: string;
   public nombres: string;
   public TotalPagar : any;
@@ -21,6 +22,7 @@ export class PixelpayPage implements OnInit {
     private storage: Storage,
     private route: ActivatedRoute,
     private router: Router,
+    private usersService: UsersService,
     public alertController: AlertController,
     // tslint:disable-next-line: no-shadowed-variable
     private BusinessService: BusinessService,
@@ -41,16 +43,19 @@ export class PixelpayPage implements OnInit {
 
   getUserInfo(){
     this.storage.get('userAuth').then((data) => {
-      this.user = data
-      this.correo = this.user.email;
-      this.nombres = this.user.nombres;
+      this.correo = data.email;
+      this.nombres = data.nombres;
+
+      this.usersService.GetInfoUsuarioPersona(data.usuario, data.email).subscribe((usuariopersona)=>{
+        this.user = usuariopersona;
+      })
     });
   }
 
 
   Pagar(){
     this.getUserInfo();
-    this.BusinessService.CalcularGanancias(this.user.usuarioPersonaId).subscribe((data) => {
+    this.BusinessService.CalcularGanancias(this.user[0].usuarioPersonaId).subscribe((data) => {
       // tslint:disable-next-line: quotemark
       this.SuccessAlert("El pago ha sido exitosamente.");
       this.router.navigate(['/tabs/home']);

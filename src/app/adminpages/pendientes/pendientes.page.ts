@@ -18,7 +18,6 @@ import { IUsuariosAsociados } from '../../models/adminuser.model';
 export class PendientesPage  {
   productosvendidos = new Array<IProductosVendidos>();
   empresaId: number;
-  TotalCompra: any;
   public userName: string;
   public nombres: string;
   usuariosocio= new Array<IUsuariosAsociados>();
