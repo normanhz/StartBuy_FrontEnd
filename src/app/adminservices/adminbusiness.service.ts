@@ -56,6 +56,11 @@ export class AdminbusinessService {
         return this.http.get<IProductosChange[]>(`${environment.API_URL}Business/GetProductosByEmpresaId/${JSON.parse(Id)}`, {headers:this.headers});
       }
 
+      getTotalVendidoByEmpresa(Id) {
+        // tslint:disable-next-line: max-line-length
+        return this.http.get<any>(`${environment.API_URL}Business/GetTotalVendidoByEmpresa/${JSON.parse(Id)}`, {headers:this.headers});
+      }
+
       EditEstadoProducto(productoId, estado) {
 
         // tslint:disable-next-line: object-literal-shorthand

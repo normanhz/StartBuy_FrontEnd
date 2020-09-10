@@ -5,7 +5,7 @@ export interface IProductosVendidos{
     producto: string;
     precio: number,
     cantidad: number,
-    total_neto: number,
+    total_Neto: number,
     fecha: Date
 };
 
